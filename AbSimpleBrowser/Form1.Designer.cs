@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.searchBox = new System.Windows.Forms.RichTextBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.activePageControl = new System.Windows.Forms.TabControl();
+            this.activePage = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -40,7 +40,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
+            this.activePageControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // searchBox
@@ -54,27 +54,29 @@
             this.searchBox.TabIndex = 1;
             this.searchBox.Text = "";
             this.searchBox.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
+            this.searchBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchBox_KeyUp);
             // 
-            // tabControl1
+            // activePageControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tabControl1.Location = new System.Drawing.Point(12, 80);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(893, 442);
-            this.tabControl1.TabIndex = 2;
+            this.activePageControl.Controls.Add(this.activePage);
+            this.activePageControl.Controls.Add(this.tabPage2);
+            this.activePageControl.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.activePageControl.Location = new System.Drawing.Point(12, 80);
+            this.activePageControl.Name = "activePageControl";
+            this.activePageControl.SelectedIndex = 0;
+            this.activePageControl.Size = new System.Drawing.Size(893, 442);
+            this.activePageControl.TabIndex = 2;
             // 
-            // tabPage1
+            // activePage
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(885, 416);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Home";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.activePage.Location = new System.Drawing.Point(4, 22);
+            this.activePage.Name = "activePage";
+            this.activePage.Padding = new System.Windows.Forms.Padding(3);
+            this.activePage.Size = new System.Drawing.Size(885, 416);
+            this.activePage.TabIndex = 0;
+            this.activePage.Text = "Home";
+            this.activePage.UseVisualStyleBackColor = true;
+            this.activePage.Click += new System.EventHandler(this.ActivePage_Click);
             // 
             // tabPage2
             // 
@@ -88,6 +90,7 @@
             // 
             // button2
             // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.Location = new System.Drawing.Point(56, 30);
             this.button2.Name = "button2";
@@ -98,6 +101,7 @@
             // 
             // button3
             // 
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.Location = new System.Drawing.Point(16, 30);
             this.button3.Name = "button3";
@@ -149,6 +153,7 @@
             // button7
             // 
             this.button7.AccessibleName = "bulk download";
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
             this.button7.Location = new System.Drawing.Point(862, 30);
             this.button7.Name = "button7";
@@ -169,7 +174,7 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.activePageControl);
             this.Controls.Add(this.searchBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -177,15 +182,15 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.activePageControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.RichTextBox searchBox;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl activePageControl;
+        private System.Windows.Forms.TabPage activePage;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
