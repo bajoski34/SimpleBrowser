@@ -3,3 +3,4 @@ image: gitpod/workspace-dotnet-vnc
 vscode:
     extensions:
         - muhammad-sammy.csharp
+        - ms-dotnettools.vscode-dotnet-runtime
