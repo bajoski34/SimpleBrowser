@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.searchBox = new System.Windows.Forms.RichTextBox();
-            this.activePageControl = new System.Windows.Forms.TabControl();
-            this.activePage = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -40,7 +37,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.activePageControl.SuspendLayout();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // searchBox
@@ -55,38 +52,6 @@
             this.searchBox.Text = "";
             this.searchBox.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
             this.searchBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchBox_KeyUp);
-            // 
-            // activePageControl
-            // 
-            this.activePageControl.Controls.Add(this.activePage);
-            this.activePageControl.Controls.Add(this.tabPage2);
-            this.activePageControl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.activePageControl.Location = new System.Drawing.Point(12, 80);
-            this.activePageControl.Name = "activePageControl";
-            this.activePageControl.SelectedIndex = 0;
-            this.activePageControl.Size = new System.Drawing.Size(893, 442);
-            this.activePageControl.TabIndex = 2;
-            // 
-            // activePage
-            // 
-            this.activePage.Location = new System.Drawing.Point(4, 22);
-            this.activePage.Name = "activePage";
-            this.activePage.Padding = new System.Windows.Forms.Padding(3);
-            this.activePage.Size = new System.Drawing.Size(885, 416);
-            this.activePage.TabIndex = 0;
-            this.activePage.Text = "Home";
-            this.activePage.UseVisualStyleBackColor = true;
-            this.activePage.Click += new System.EventHandler(this.ActivePage_Click);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(885, 416);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "New Tab";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -162,11 +127,21 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(16, 60);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(883, 468);
+            this.richTextBox1.TabIndex = 10;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 534);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button1);
@@ -174,7 +149,6 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.activePageControl);
             this.Controls.Add(this.searchBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -182,16 +156,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.activePageControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.RichTextBox searchBox;
-        private System.Windows.Forms.TabControl activePageControl;
-        private System.Windows.Forms.TabPage activePage;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
@@ -199,6 +169,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
