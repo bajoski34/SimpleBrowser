@@ -38,6 +38,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.settingsDrpDown = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // searchBox
@@ -136,11 +137,30 @@
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged_1);
             // 
+            // settingsDrpDown
+            // 
+            this.settingsDrpDown.DisplayMember = "set home url";
+            this.settingsDrpDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.settingsDrpDown.FormattingEnabled = true;
+            this.settingsDrpDown.Items.AddRange(new object[] {
+            "set home address",
+            "change theme",
+            "see history",
+            "see downloads",
+            "see favorites"});
+            this.settingsDrpDown.Location = new System.Drawing.Point(673, 62);
+            this.settingsDrpDown.Name = "settingsDrpDown";
+            this.settingsDrpDown.Size = new System.Drawing.Size(121, 150);
+            this.settingsDrpDown.TabIndex = 11;
+            this.settingsDrpDown.Visible = false;
+            this.settingsDrpDown.SelectedIndexChanged += new System.EventHandler(this.settingsDrpDown_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 534);
+            this.Controls.Add(this.settingsDrpDown);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -170,6 +190,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ComboBox settingsDrpDown;
     }
 }
 

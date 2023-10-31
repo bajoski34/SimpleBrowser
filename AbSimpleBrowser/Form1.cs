@@ -15,10 +15,31 @@ namespace AbSimpleBrowser
         public string DefaultHome = "https://www.hw.ac.uk";
         private List<WebsiteDto> historyStack = new List<WebsiteDto>();
         private WebsiteDto currentWebsite = null;
+        private Form homeWindow;
         public Form1()
         {
             InitializeComponent();
+            Init();
+        }
+
+        private void Init()
+        {
+            //Setup tooltip for navigation
             SetToolTipsToActions();
+
+            //set default home settings
+            homeWindow = new Home(ref this.DefaultHome);
+
+            // Prepare the settings dropdown.
+            List<Settings> menu = new List<Settings>();
+            menu.Add(new Settings() { ID = 1, Text = "set home address" });
+            menu.Add(new Settings() { ID = 2, Text = "set all  history" });
+            menu.Add(new Settings() { ID = 3, Text = "set all downloads" });
+            menu.Add(new Settings() { ID = 4, Text = "set favorites" });
+            menu.Add(new Settings() { ID = 5, Text = "change themes" });
+            this.settingsDrpDown.DataSource = menu;
+            this.settingsDrpDown.DisplayMember = "Text";
+            this.settingsDrpDown.ValueMember = "ID";
         }
 
         private void SetToolTipsToActions()
@@ -41,21 +62,18 @@ namespace AbSimpleBrowser
         private void Button2_Click(object sender, EventArgs e)
         {
             //forward
-            if (historyStack.Count() > 1 && (this.historyStack.Last().Url != this.currentWebsite.Url))
+            if (this.currentWebsite.Url != this.historyStack.Last().Url)
             {
-                WebsiteDto website = historyStack.FirstOrDefault(w => w.Url == this.currentWebsite.Url);
-                // Back...
-                if (website != null)
-                {
-                    this.currentWebsite = NextWebsite(this.currentWebsite);
-                    WebBrowser wb = new WebBrowser { Name = "James Bond", Url = this.currentWebsite.Url };
-                    this.searchBox.Text = currentWebsite.Url;
-                    this.richTextBox1.Text = wb.AccessWebPage();
-                    this.historyStack.Add(this.currentWebsite);
-                }
+                this.currentWebsite = NextWebsite(this.currentWebsite);
+                WebBrowser wb = new WebBrowser { Name = "James Bond", Url = this.currentWebsite.Url };
+                this.searchBox.Text = currentWebsite.Url;
+                this.richTextBox1.Text = wb.AccessWebPage();
+                // this.historyStack.Add(this.currentWebsite);
             }
             else
             {
+                Console.WriteLine($"last url in history { this.historyStack.Last().Url }");
+                Console.WriteLine($"current url : { this.currentWebsite.Url }");
                 MessageBox.Show($"No forward history!");
             }
         }
@@ -75,21 +93,27 @@ namespace AbSimpleBrowser
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"Settings");
+            this.settingsDrpDown.Visible = !this.settingsDrpDown.Visible;   
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"Home");
+            //home
+
+            // redirect to current home url
+
+
+            // on hold set home url
+            homeWindow.TopLevel = true;
+            homeWindow.Show();
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
             //refresh
             WebBrowser wb = new WebBrowser { Name = "James Bond", Url = this.currentWebsite.Url };
-            this.searchBox.Text = currentWebsite.Url;
+            // this.searchBox.Text = currentWebsite.Url;
             this.richTextBox1.Text = wb.AccessWebPage();
-            this.historyStack.Add(this.currentWebsite);
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -105,7 +129,8 @@ namespace AbSimpleBrowser
                     WebBrowser wb = new WebBrowser { Name = "James Bond", Url = website.Url };
                     this.searchBox.Text = currentWebsite.Url;
                     this.richTextBox1.Text = wb.AccessWebPage();
-                    this.historyStack.Add(this.currentWebsite);
+                    Button5_Click(sender, e);
+                    // this.historyStack.Add(this.currentWebsite);
                 } 
             } else
             {
@@ -160,9 +185,11 @@ namespace AbSimpleBrowser
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {            
+        {
             //On load render the hw.ac.uk website.
-            WebBrowser wb = new WebBrowser { Name = "James Bond", Url = DefaultHome };
+            //check if there is a saved home url 
+            string SavedUrl = null;
+            WebBrowser wb = new WebBrowser { Name = "James Bond", Url = SavedUrl ?? DefaultHome };
             this.richTextBox1.Text = wb.AccessWebPage();
             this.searchBox.Text = DefaultHome;
 
@@ -198,6 +225,11 @@ namespace AbSimpleBrowser
         private void RichTextBox1_TextChanged_1(object sender, EventArgs e)
         {
             // needed.
+        }
+
+        private void settingsDrpDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(this.settingsDrpDown.ValueMember);
         }
     }
 }

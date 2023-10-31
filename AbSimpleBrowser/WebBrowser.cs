@@ -24,14 +24,7 @@ namespace AbSimpleBrowser
             {
                 // https://learn.microsoft.com/en-us/dotnet/api/system.uribuilder?view=net-7.0&redirectedfrom=MSDN
                 // make use of the Uri builder to build a proper url.
-
-                if(!this.Url.Contains(".com"))
-                {
-                    this.Url = (new UriBuilder("https", Url + ".com")).ToString();
-                } else
-                {
-                    this.Url = (new UriBuilder("https", Url)).ToString();
-                }  
+               this.Url = (new UriBuilder("https", Url)).ToString();
             }
 
             // call the client class to make the request and return the response
