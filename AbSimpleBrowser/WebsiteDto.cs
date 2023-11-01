@@ -8,8 +8,8 @@ namespace AbSimpleBrowser
 {
     class WebsiteDto
     {
-        public string Url { get; set; }
-        public string VisitTimestamp { get; set; }
+        public String Url { get; set; }
+        public String VisitTimestamp { get; set; }
 
         public bool IsFavorite { get; set; } = false;
     }

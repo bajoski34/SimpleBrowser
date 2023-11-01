@@ -15,7 +15,7 @@ namespace AbSimpleBrowser
         public string DefaultHome = "https://www.hw.ac.uk";
         private List<WebsiteDto> historyStack = new List<WebsiteDto>();
         private WebsiteDto currentWebsite = null;
-        private Form homeWindow;
+        private Home homeWindow;
         public Form1()
         {
             InitializeComponent();
@@ -26,9 +26,6 @@ namespace AbSimpleBrowser
         {
             //Setup tooltip for navigation
             SetToolTipsToActions();
-
-            //set default home settings
-            homeWindow = new Home(ref this.DefaultHome);
 
             // Prepare the settings dropdown.
             List<Settings> menu = new List<Settings>();
@@ -97,9 +94,9 @@ namespace AbSimpleBrowser
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            
             // on hold set home url
             homeWindow.TopLevel = true;
+            homeWindow.Owner = this;
             homeWindow.ShowDialog();
         }
 
@@ -183,8 +180,14 @@ namespace AbSimpleBrowser
         {
             //On load render the hw.ac.uk website.
             //check if there is a saved home url 
-            string SavedUrl = null;
-            WebBrowser wb = new WebBrowser { Name = "James Bond", Url = SavedUrl ?? DefaultHome };
+            //set default home settings
+            homeWindow = new Home(ref this.DefaultHome);
+            // add subscriber.
+            homeWindow.HomePageSet += currentHomePageDisplay_TextChanged;
+
+
+            this.currentHomePageDisplay.Text = DefaultHome;
+            WebBrowser wb = new WebBrowser { Name = "James Bond", Url = DefaultHome };
             this.richTextBox1.Text = wb.AccessWebPage();
             this.searchBox.Text = DefaultHome;
 
@@ -199,23 +202,6 @@ namespace AbSimpleBrowser
             if (e.KeyCode == Keys.Enter && url != "")
                 GetAddress_Html( url );
         }
-
-        private void MarkAsFavorite()
-        {
-            WebsiteDto website = historyStack.FirstOrDefault(w => w.Url == this.currentWebsite.Url);
-
-            //historyStack.Count();
-
-            if(website != null)
-            {
-                this.currentWebsite.IsFavorite = true;
-                website.IsFavorite = true;
-                //update the ui to show this is a favorite website.
-                
-            }
-        }
-
-
 
         private void RichTextBox1_TextChanged_1(object sender, EventArgs e)
         {
@@ -242,5 +228,11 @@ namespace AbSimpleBrowser
             //settings dropdown
             //Console.WriteLine( );
         }
+
+        private void currentHomePageDisplay_TextChanged(string url)
+        {
+            this.currentHomePageDisplay.Text = url;
+        }
+
     }
 }

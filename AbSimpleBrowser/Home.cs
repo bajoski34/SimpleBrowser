@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace AbSimpleBrowser
 {
-
-
     public partial class Home : Form
     {
+        public Action<string> HomePageSet;
         public string currentHomePage;
+
         private List<WebsiteDto> previousHomePages = new List<WebsiteDto>();
         public Home(ref string url)
         {
@@ -35,9 +35,25 @@ namespace AbSimpleBrowser
                 {
                     currentHomePage = this.homeUrl.Text;
                 }
+
+                WebsiteDto currentHomeWebsite = new WebsiteDto() { IsFavorite = true, Url = currentHomePage, VisitTimestamp = DateTime.Now.ToString() };
+
+                WebsiteDto websiteFound = this.previousHomePages.Find(wb => wb.Url == currentHomeWebsite.Url);
+                if (websiteFound == null)
+                {
+                    this.previousHomePages.Add(currentHomeWebsite);
+                    currentHomePage = currentHomeWebsite.Url;
+                    HomePageSet?.Invoke(currentHomePage);
+                    homeUrl.Refresh();
+                    homeUrl.DataSource = previousHomePages;
+                    homeUrl.DisplayMember = "Url";
+                    MessageBox.Show("Home url saved");
+                } else
+                {
+                    MessageBox.Show("Selection saved!");
+                }
                 
-                MessageBox.Show("Home url saved");
-                this.Hide();
+                this.Close();
             } else
             {
                 MessageBox.Show("Enter a new url to set as Homepage!");

@@ -39,6 +39,8 @@
             this.button7 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.settingsDrpDown = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.currentHomePageDisplay = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // searchBox
@@ -155,11 +157,33 @@
             this.settingsDrpDown.Visible = false;
             this.settingsDrpDown.SelectionChangeCommitted += new System.EventHandler(this.settingsDrpDown_SelectedIndexChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(170, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(125, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "current homepage set to:";
+            // 
+            // currentHomePageDisplay
+            // 
+            this.currentHomePageDisplay.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.currentHomePageDisplay.CausesValidation = false;
+            this.currentHomePageDisplay.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.currentHomePageDisplay.Location = new System.Drawing.Point(301, 7);
+            this.currentHomePageDisplay.Name = "currentHomePageDisplay";
+            this.currentHomePageDisplay.ReadOnly = true;
+            this.currentHomePageDisplay.Size = new System.Drawing.Size(406, 20);
+            this.currentHomePageDisplay.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 534);
+            this.Controls.Add(this.currentHomePageDisplay);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.settingsDrpDown);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button7);
@@ -177,6 +201,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -191,6 +216,8 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.ComboBox settingsDrpDown;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox currentHomePageDisplay;
     }
 }
 
