@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Favorite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Favorite.Designer.cs">
+      <DependentUpon>Favorite.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,9 @@
     <Compile Include="Settings.cs" />
     <Compile Include="WebBrowser.cs" />
     <Compile Include="WebsiteDto.cs" />
+    <EmbeddedResource Include="Favorite.resx">
+      <DependentUpon>Favorite.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
