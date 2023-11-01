@@ -153,7 +153,7 @@
             this.settingsDrpDown.Size = new System.Drawing.Size(121, 150);
             this.settingsDrpDown.TabIndex = 11;
             this.settingsDrpDown.Visible = false;
-            this.settingsDrpDown.SelectedIndexChanged += new System.EventHandler(this.settingsDrpDown_SelectedIndexChanged);
+            this.settingsDrpDown.SelectionChangeCommitted += new System.EventHandler(this.settingsDrpDown_SelectedIndexChanged);
             // 
             // Form1
             // 

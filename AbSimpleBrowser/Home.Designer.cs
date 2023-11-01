@@ -29,17 +29,9 @@ namespace AbSimpleBrowser
         /// </summary>
         private void InitializeComponent()
         {
-            this.homeUrl = new System.Windows.Forms.TextBox();
             this.setHomeBtn = new System.Windows.Forms.Button();
+            this.homeUrl = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // homeUrl
-            // 
-            this.homeUrl.Location = new System.Drawing.Point(86, 45);
-            this.homeUrl.Name = "homeUrl";
-            this.homeUrl.Size = new System.Drawing.Size(491, 20);
-            this.homeUrl.TabIndex = 0;
-            this.homeUrl.TextChanged += new System.EventHandler(this.homeUrl_TextChanged);
             // 
             // setHomeBtn
             // 
@@ -51,23 +43,30 @@ namespace AbSimpleBrowser
             this.setHomeBtn.UseVisualStyleBackColor = true;
             this.setHomeBtn.Click += new System.EventHandler(this.setHomeBtn_Click);
             // 
+            // homeUrl
+            // 
+            this.homeUrl.FormattingEnabled = true;
+            this.homeUrl.Location = new System.Drawing.Point(86, 44);
+            this.homeUrl.Name = "homeUrl";
+            this.homeUrl.Size = new System.Drawing.Size(491, 21);
+            this.homeUrl.TabIndex = 2;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.setHomeBtn);
             this.Controls.Add(this.homeUrl);
+            this.Controls.Add(this.setHomeBtn);
             this.Name = "Home";
             this.Text = "Home";
+            this.Load += new System.EventHandler(this.Home_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox homeUrl;
         private System.Windows.Forms.Button setHomeBtn;
+        private System.Windows.Forms.ComboBox homeUrl;
     }
 }

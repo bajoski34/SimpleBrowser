@@ -32,14 +32,13 @@ namespace AbSimpleBrowser
 
             // Prepare the settings dropdown.
             List<Settings> menu = new List<Settings>();
-            menu.Add(new Settings() { ID = 1, Text = "set home address" });
+            menu.Add(new Settings() { ID = (int)(Menu_Settings)Menu_Settings.Home_Url_Change , Text = "set home address" });
             menu.Add(new Settings() { ID = 2, Text = "set all  history" });
             menu.Add(new Settings() { ID = 3, Text = "set all downloads" });
             menu.Add(new Settings() { ID = 4, Text = "set favorites" });
             menu.Add(new Settings() { ID = 5, Text = "change themes" });
             this.settingsDrpDown.DataSource = menu;
             this.settingsDrpDown.DisplayMember = "Text";
-            this.settingsDrpDown.ValueMember = "ID";
         }
 
         private void SetToolTipsToActions()
@@ -98,14 +97,10 @@ namespace AbSimpleBrowser
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            //home
-
-            // redirect to current home url
-
-
+            
             // on hold set home url
             homeWindow.TopLevel = true;
-            homeWindow.Show();
+            homeWindow.ShowDialog();
         }
 
         private void Button5_Click(object sender, EventArgs e)
@@ -229,7 +224,23 @@ namespace AbSimpleBrowser
 
         private void settingsDrpDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine(this.settingsDrpDown.ValueMember);
+            int currentSettingChoice = ((Settings)this.settingsDrpDown.SelectedItem).ID;
+            switch (currentSettingChoice)
+            {
+                case 1:
+                    homeWindow.ShowDialog();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+            }
+            //settings dropdown
+            //Console.WriteLine( );
         }
     }
 }
