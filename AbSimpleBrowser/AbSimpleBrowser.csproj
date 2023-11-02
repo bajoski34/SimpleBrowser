@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.11.54.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.54\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,11 +55,19 @@
     <Compile Include="Favorite.Designer.cs">
       <DependentUpon>Favorite.cs</DependentUpon>
     </Compile>
+    <Compile Include="FavoriteManager.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="History.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History.Designer.cs">
+      <DependentUpon>History.cs</DependentUpon>
     </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -68,7 +79,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderingEngine.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="WebBrowser.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="WebsiteDto.cs" />
     <EmbeddedResource Include="Favorite.resx">
       <DependentUpon>Favorite.cs</DependentUpon>
@@ -87,7 +98,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,6 +116,36 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favorite-added-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favorite-added-icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favorite_minus.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favorite_minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favorite_minus_two.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favorite_header_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_header_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\history_main_ico.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_main_ico.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\history_main_ico.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

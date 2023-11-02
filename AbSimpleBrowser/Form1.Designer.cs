@@ -34,13 +34,15 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.isFavorite = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.settingsDrpDown = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.currentHomePageDisplay = new System.Windows.Forms.TextBox();
+            this.chgHomeAddress = new System.Windows.Forms.Button();
+            this.historyCta = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // searchBox
@@ -55,6 +57,7 @@
             this.searchBox.Text = "";
             this.searchBox.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
             this.searchBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchBox_KeyUp);
+            this.searchBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RichTextBox1_TextChanged);
             // 
             // button2
             // 
@@ -98,20 +101,20 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
-            // button1
+            // isFavorite
             // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(715, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(37, 25);
-            this.button1.TabIndex = 7;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.isFavorite.Image = ((System.Drawing.Image)(resources.GetObject("isFavorite.Image")));
+            this.isFavorite.Location = new System.Drawing.Point(713, 30);
+            this.isFavorite.Name = "isFavorite";
+            this.isFavorite.Size = new System.Drawing.Size(37, 25);
+            this.isFavorite.TabIndex = 7;
+            this.isFavorite.UseVisualStyleBackColor = true;
+            this.isFavorite.Click += new System.EventHandler(this.isFavorite_Click);
             // 
             // button6
             // 
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.Location = new System.Drawing.Point(758, 30);
+            this.button6.Location = new System.Drawing.Point(752, 30);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(37, 25);
             this.button6.TabIndex = 8;
@@ -152,7 +155,7 @@
             "see favorites"});
             this.settingsDrpDown.Location = new System.Drawing.Point(673, 62);
             this.settingsDrpDown.Name = "settingsDrpDown";
-            this.settingsDrpDown.Size = new System.Drawing.Size(121, 150);
+            this.settingsDrpDown.Size = new System.Drawing.Size(116, 150);
             this.settingsDrpDown.TabIndex = 11;
             this.settingsDrpDown.Visible = false;
             this.settingsDrpDown.SelectionChangeCommitted += new System.EventHandler(this.settingsDrpDown_SelectedIndexChanged);
@@ -160,7 +163,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(170, 7);
+            this.label1.Location = new System.Drawing.Point(170, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 13);
             this.label1.TabIndex = 12;
@@ -171,24 +174,46 @@
             this.currentHomePageDisplay.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.currentHomePageDisplay.CausesValidation = false;
             this.currentHomePageDisplay.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.currentHomePageDisplay.Location = new System.Drawing.Point(301, 7);
+            this.currentHomePageDisplay.Location = new System.Drawing.Point(301, 3);
             this.currentHomePageDisplay.Name = "currentHomePageDisplay";
             this.currentHomePageDisplay.ReadOnly = true;
             this.currentHomePageDisplay.Size = new System.Drawing.Size(406, 20);
             this.currentHomePageDisplay.TabIndex = 13;
+            // 
+            // chgHomeAddress
+            // 
+            this.chgHomeAddress.Location = new System.Drawing.Point(713, 3);
+            this.chgHomeAddress.Name = "chgHomeAddress";
+            this.chgHomeAddress.Size = new System.Drawing.Size(76, 23);
+            this.chgHomeAddress.TabIndex = 14;
+            this.chgHomeAddress.Text = "change";
+            this.chgHomeAddress.UseVisualStyleBackColor = true;
+            this.chgHomeAddress.Click += new System.EventHandler(this.chgHomeAddress_Click);
+            // 
+            // historyCta
+            // 
+            this.historyCta.Image = global::AbSimpleBrowser.Properties.Resources.history_main_ico;
+            this.historyCta.Location = new System.Drawing.Point(813, 28);
+            this.historyCta.Name = "historyCta";
+            this.historyCta.Size = new System.Drawing.Size(43, 27);
+            this.historyCta.TabIndex = 15;
+            this.historyCta.UseVisualStyleBackColor = true;
+            this.historyCta.Click += new System.EventHandler(this.historyCta_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 534);
+            this.Controls.Add(this.historyCta);
+            this.Controls.Add(this.chgHomeAddress);
             this.Controls.Add(this.currentHomePageDisplay);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.settingsDrpDown);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.isFavorite);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -198,7 +223,7 @@
             this.Name = "Form1";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Abraham\'s Browser";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -211,13 +236,15 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button isFavorite;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.ComboBox settingsDrpDown;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox currentHomePageDisplay;
+        private System.Windows.Forms.Button chgHomeAddress;
+        private System.Windows.Forms.Button historyCta;
     }
 }
 

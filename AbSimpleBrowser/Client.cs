@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace AbSimpleBrowser
 {
-    class WebBrowser
+    class Client
     {
         public string Url;
         public string Name = "Abe/v1.0";
-        public string Html = "";
 
         public string AccessWebPage()
         {

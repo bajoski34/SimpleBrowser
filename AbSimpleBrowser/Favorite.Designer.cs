@@ -30,12 +30,12 @@ namespace AbSimpleBrowser
         private void InitializeComponent()
         {
             this.listView1 = new System.Windows.Forms.ListView();
-            this.removeSite = new System.Windows.Forms.Button();
-            this.addSite = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.ListId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ListUrl = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ListDateAdded = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.removeSite = new System.Windows.Forms.Button();
+            this.addSite = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listView1
@@ -51,6 +51,21 @@ namespace AbSimpleBrowser
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // ListId
+            // 
+            this.ListId.Text = "ID";
+            // 
+            // ListUrl
+            // 
+            this.ListUrl.Text = "Url";
+            this.ListUrl.Width = 255;
+            // 
+            // ListDateAdded
+            // 
+            this.ListDateAdded.Text = "Date Added";
+            this.ListDateAdded.Width = 80;
             // 
             // removeSite
             // 
@@ -79,20 +94,6 @@ namespace AbSimpleBrowser
             this.label1.Size = new System.Drawing.Size(196, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Add or remove sites from you favorite list";
-            // 
-            // ListId
-            // 
-            this.ListId.Text = "ID";
-            // 
-            // ListUrl
-            // 
-            this.ListUrl.Text = "Url";
-            this.ListUrl.Width = 255;
-            // 
-            // ListDateAdded
-            // 
-            this.ListDateAdded.Text = "Date Added";
-            this.ListDateAdded.Width = 80;
             // 
             // Favorite
             // 
