@@ -16,6 +16,8 @@ namespace AbSimpleBrowser
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            DbHelper.Migrations();
             Application.Run(new Form1());
         }
     }

@@ -12,7 +12,7 @@ namespace AbSimpleBrowser
 {
     public partial class Form1 : Form
     {
-        public string DefaultHome = "https://www.hw.ac.uk";
+        public string DefaultHome = null;
         private List<WebsiteDto> historyStack = new List<WebsiteDto>();
         private WebsiteDto currentWebsite = null;
         private Home homeWindow;
@@ -110,7 +110,7 @@ namespace AbSimpleBrowser
         {
             //refresh
             Client wb = new Client { Name = "James Bond", Url = this.currentWebsite.Url };
-            // this.searchBox.Text = currentWebsite.Url;
+            this.searchBox.Text = currentWebsite.Url;
             this.richTextBox1.Text = wb.AccessWebPage();
         }
 
@@ -187,6 +187,9 @@ namespace AbSimpleBrowser
             // get page title
             string html = wb.AccessWebPage();
             this.Text = Helper.Get_Title(html);
+
+            this.requestStatus.ForeColor = (wb.status == 200) ? Color.Green : Color.Red;
+            this.requestStatus.Text = wb.status.ToString();
             this.richTextBox1.Text = html;
             this.currentWebsite = new WebsiteDto() { Url = url, VisitTimestamp = DateTime.Now.ToString() };
             this.Effect_Favorite_Change();
@@ -203,14 +206,20 @@ namespace AbSimpleBrowser
             homeWindow.HomePageSet += currentHomePageDisplay_TextChanged;
             favoriteManager.MarkedAsFavorite += favoriteWindow.UpdateUiOnFavoriteStackUpdate;
 
+
+            this.DefaultHome = DbHelper.getHomepage(); // returns hompage url;
             this.currentHomePageDisplay.Text = DefaultHome;
-            Client wb = new Client { Name = "James Bond", Url = DefaultHome };
+            Client wb = new Client { Name = this.Text, Url = DefaultHome };
             this.richTextBox1.Text = wb.AccessWebPage();
             this.searchBox.Text = DefaultHome;
+            this.requestStatus.ForeColor = (wb.status == 200) ? Color.Green : Color.Red;
+            this.requestStatus.Text = wb.status.ToString();
 
             this.currentWebsite = new WebsiteDto() { Url = DefaultHome, VisitTimestamp = DateTime.Now.ToString() };
             //add home url to history stack.
-            this.historyStack.Add(currentWebsite);
+
+            DbHelper.AddToHistory(currentWebsite);
+            this.historyStack = DbHelper.getHistory();
             this.Effect_Favorite_Change();
         }
 
@@ -332,6 +341,19 @@ namespace AbSimpleBrowser
         private void historyCta_Click(object sender, EventArgs e)
         {
             historyWindow.ShowDialog();
+        }
+
+        private void requestStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Q)
+            {
+                Application.Exit();
+            }
         }
     }
 }
